@@ -1,46 +1,18 @@
-# django-empty
+# Filmes Django — Exercício 12
 
-Este repositório serve como um template base para projetos Django, permitindo iniciar rapidamente um novo projeto com uma estrutura pré-configurada.
+## Modelos
 
-## Propósito
+- Ator, Filme (N:M com Ator), Utilizador, Classificacao (FK Utilizador + FK Filme + nota)
 
-O `django-empty` foi criado para ser um ponto de partida para projetos Django. Pode clonar este repositório e importar o seu projeto Django existente, aproveitando a configuração inicial já preparada.
+## Vistas
 
-## Conteúdo
+- `/filmes/` — lista filmes com atores
+- `/classificacoes/` — lista utilizadores com as suas classificações
 
-- **.github/workflows**: Contém os ficheiros de configuração para o pipeline CI/CD, que automatiza o build, push e deploy da imagem Docker.
-- **.gitignore**: Define os ficheiros e pastas a serem ignorados pelo Git, como ficheiros temporários e ambientes virtuais.
-- **Dockerfile**: Ficheiro de configuração para construir a imagem Docker da aplicação Django. Atenção que `project` deve corresponder ao nome da pasta onde está `settings.py`.
-- **docker-compose.yml**: Configuração para orquestrar serviços com Docker Compose, útil para desenvolvimento local.
-- **requirements.txt**: Lista as dependências Python necessárias para o projeto.
+## Setup
 
-## Media/Static Files
-
-Adicione WhiteNoise no MIDDLEWARE antes do CommonMiddleware:
-
-```
-"whitenoise.middleware.WhiteNoiseMiddleware",
+```bash
+python manage.py migrate && python manage.py createsuperuser && python manage.py runserver
 ```
 
-Em settings.py:
-```
-import os
-
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'), 
-]
-
-STORAGES = {
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles') 
-```
+**Autor:** Francisco Pearson — 22308485 | Universidade Lusófona · PW 2025/26

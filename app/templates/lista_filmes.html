@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Filmes</title>
+  </head>
+  <body>
+    <h1>Filmes:</h1>
+    <ul>
+      {% for filme in filmes %}
+      <li>
+        <strong>{{ filme.titulo }}</strong> ({{ filme.data_lancamento.year }},
+        {{ filme.pais_origem }})
+        <ul>
+          <li>
+            Atores: {% for ator in filme.atores.all %}{{ ator.nome }}{% if not
+            forloop.last %}, {% endif %}{% empty %}sem atores{% endfor %}
+          </li>
+        </ul>
+      </li>
+      {% empty %}
+      <li>Sem filmes</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

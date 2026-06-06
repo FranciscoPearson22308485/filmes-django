@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Classificações</title>
+</head>
+<body>
+<h1>Classificações:</h1>
+<ul>
+    {% for utilizador in utilizadores %}
+    <li><strong>{{ utilizador.nome }}</strong>
+        <ul>
+            {% for c in utilizador.classificacoes.all %}
+            <li>{{ c.filme.titulo }} → Nota: {{ c.nota }}</li>
+            {% empty %}
+            <li><em>Sem classificações</em></li>
+            {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
