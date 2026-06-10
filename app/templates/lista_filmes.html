@@ -13,8 +13,7 @@
         {{ filme.pais_origem }})
         <ul>
           <li>
-            Atores: {% for ator in filme.atores.all %}{{ ator.nome }}{% if not
-            forloop.last %}, {% endif %}{% empty %}sem atores{% endfor %}
+            Atores: {% for ator in filme.atores.all %}{{ ator.nome }}{% if not forloop.last %}, {% endif %}{% empty %}sem atores{% endfor %}
           </li>
         </ul>
       </li>

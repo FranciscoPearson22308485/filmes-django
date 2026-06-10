@@ -15,4 +15,4 @@ RUN python manage.py collectstatic --noinput
 
 EXPOSE 3000
 
-CMD ["gunicorn", "--bind", "0.0.0.0:3000", "project.wsgi:application"]
+CMD ["sh", "-c", "python manage.py migrate && gunicorn --bind 0.0.0.0:3000 projeto.wsgi:application"]
